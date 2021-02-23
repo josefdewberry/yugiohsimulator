@@ -1,0 +1,127 @@
+Type	Name	Text	Types/Property	Attribute	Level	ATK	DEF	Passcode	Number	Rarity
+Monster	Tri-Horned Dragon	An unworthy dragon with three sharp horns sprouting from its head.	Dragon/Normal	Dark	8	2850	2350	39111158	LOB-EN000	Secret Rare
+Monster	Blue-Eyes White Dragon	This legendary dragon is a powerful engine of destruction. Virtually invincible, very few have faced this awesome creature and lived to tell the tale.	Dragon/Normal	Light	8	3000	2500	89631139	LOB-EN001	Ultra Rare
+Monster	Hitotsu-Me Giant	Capable of firing cannonballs from its mouth for long-range attacks, this creature is particularly effective in mountain battles.	Beast-Warrior/Normal	Earth	4	1200	100	76184692	LOB-EN002	Common
+Monster	Flame Swordsman	"Flame Manipulator" + "Masaki the Legendary Swordsman"	Warrior/Fusion	Fire	5	1800	1600	45231177	LOB-EN003	Super Rare
+Monster	Skull Servant	A skeletal ghost that isn't strong but can mean trouble in large numbers.	Zombie/Normal	Dark	1	300	200	32274490	LOB-EN004	Common
+Monster	Dark Magician	The ultimate wizard in terms of attack and defense.	Spellcaster/Normal	Dark	7	2500	2100	46986414	LOB-EN005	Ultra Rare
+Monster	Gaia The Fierce Knight	A knight whose horse travels faster than the wind. His battle-charge is a force to be reckoned with.	Warrior/Normal	Earth	7	2300	2100	6368038	LOB-EN006	Ultra Rare
+Monster	Celtic Guardian	An elf who learned to wield a sword, he baffles enemies with lightning-swift attacks.	Warrior/Normal	Earth	4	1400	1200	91152256	LOB-EN007	Super Rare
+Monster	Basic Insect	Usually found traveling in swarms, this creature's ideal environment is the forest.	Insect/Normal	Earth	2	500	700	89091579	LOB-EN008	Common
+Monster	Mammoth Graveyard	A mammoth that protects the graves of its pack and is absolutely merciless when facing grave-robbers.	Dinosaur/Normal	Earth	3	1200	800	40374923	LOB-EN009	Common
+Monster	Silver Fang	A snow wolf that's beautiful to the eye, but absolutely vicious in battle.	Beast/Normal	Earth	3	1200	800	90357090	LOB-EN010	Common
+Monster	Dark Gray	Entirely gray, this beast has rarely been seen by mortal eyes.	Beast/Normal	Earth	3	800	900	9159938	LOB-EN011	Common
+Monster	Trial of Nightmare	This fiend passes judgment on enemies that are locked in coffins.	Fiend/Normal	Dark	4	1300	900	77827521	LOB-EN012	Common
+Monster	Nemuriko	A child-like creature that controls a sleep fiend to beckon enemies into eternal slumber.	Spellcaster/Normal	Dark	3	800	700	90963488	LOB-EN013	Common
+Monster	The 13th Grave	A zombie that suddenly appeared from plot #13 - an empty grave.	Zombie/Normal	Dark	3	1200	900	32864	LOB-EN014	Common
+Monster	Charubin the Fire Knight	"Monster Egg" + "Hinotama Soul"	Pyro/Fusion	Fire	3	1100	800	37421579	LOB-EN015	Rare
+Monster	Flame Manipulator	This Spellcaster attacks enemies with fire-related spells such as "Sea of Flames" and "Wall of Fire".	Spellcaster/Normal	Fire	3	900	1000	34460851	LOB-EN016	Common
+Monster	Monster Egg	A warrior hidden within an egg that attacks enemies by flinging eggshells.	Warrior/Normal	Earth	3	600	900	36121917	LOB-EN017	Common
+Monster	Firegrass	A fire-breathing plant found growing near volcanoes.	Plant/Normal	Earth	2	700	600	53293545	LOB-EN018	Common
+Monster	Darkfire Dragon	"Firegrass" + "Petit Dragon"	Dragon/Fusion	Dark	4	1500	1250	17881964	LOB-EN019	Rare
+Monster	Dark King of the Abyss	It's said that this King of the Netherworld once had the power to rule over the dark.	Fiend/Normal	Dark	3	1200	800	53375573	LOB-EN020	Common
+Monster	Fiend Reflection #2	A bird-beast that summons reinforcements with a hand mirror.	Winged Beast/Normal	Light	4	1100	1400	2863439	LOB-EN021	Common
+Monster	Fusionist	"Petit Angel" + "Mystical Sheep #2"	Beast/Fusion	Earth	3	900	700	1641882	LOB-EN022	Rare
+Monster	Turtle Tiger	A tiger encased in a protective shell that attacks with razor-sharp fangs.	Aqua/Normal	Water	4	1000	1500	37313348	LOB-EN023	Common
+Monster	Petit Dragon	A very small dragon known for its vicious attacks.	Dragon/Normal	Wind	2	600	700	75356564	LOB-EN024	Common
+Monster	Petit Angel	A quick-moving and tiny fairy that's very difficult to hit.	Fairy/Normal	Light	3	600	900	38142739	LOB-EN025	Common
+Monster	Hinotama Soul	An intensely hot flame creature that rams anything standing in its way.	Pyro/Normal	Fire	2	600	500	96851799	LOB-EN026	Common
+Monster	Aqua Madoor	A wizard of the waters that conjures a liquid wall to crush any enemies that oppose him.	Spellcaster/Normal	Water	4	1200	2000	85639257	LOB-EN027	Rare
+Monster	Kagemusha of the Blue Flame	Serving as a double for the Ruler of the Blue Flame, he's a master swordsman that wields a fine blade.	Warrior/Normal	Earth	2	800	400	15401633	LOB-EN028	Common
+Monster	Flame Ghost	"Skull Servant" + "Dissolverock"	Zombie/Fusion	Dark	3	1000	800	58528964	LOB-EN029	Rare
+Monster	Two-Mouth Darkruler	A dinosaur with two deadly jaws, it stores electricity in its horn and releases high voltage bolts from the mouth on its back.	Dinosaur/Normal	Earth	3	900	700	57305373	LOB-EN030	Common
+Monster	Dissolverock	A monster born in the lava pits, it generates intense heat that can melt away its enemies.	Rock/Normal	Earth	3	900	1000	40826495	LOB-EN031	Common
+Monster	Root Water	An amphibian capable of calling up a massive tidal wave from the dark seas to wipe out enemy monsters.	Fish/Normal	Water	3	900	800	39004808	LOB-EN032	Common
+Monster	The Furious Sea King	Grand King of the Seven Seas, he's able to summon massive tidal waves to drown the enemy.	Aqua/Normal	Water	3	800	700	18710707	LOB-EN033	Common
+Monster	Green Phantom King	This youthful king of the forests lives in a green world, abundant with trees and wildlife.	Plant/Normal	Earth	3	500	1600	22910685	LOB-EN034	Common
+Monster	Ray & Temperature	The Sun and the North Wind join hands to deliver a devastating combination of heat and gale-force winds.	Fairy/Normal	Light	3	1000	1000	85309439	LOB-EN035	Common
+Monster	King Fog	A fiend that dwells in a blinding curtain of smoke.	Fiend/Normal	Dark	3	100	900	84686841	LOB-EN036	Common
+Monster	Mystical Sheep #2	A monstrous sheep with a long tail for hypnotizing enemies.	Beast/Normal	Earth	3	800	1000	83464209	LOB-EN037	Common
+Monster	Masaki the Legendary Swordsman	Legendary swordmaster Masaki is a veteran of over 100 battles.	Warrior/Normal	Earth	4	1100	1100	44287299	LOB-EN038	Common
+Monster	Kurama	A vicious bird that attacks from the skies with its whip-like tail.	Winged Beast/Normal	Wind	3	800	800	85705804	LOB-EN039	Common
+Spell	Legendary Sword	Equip only to a Warrior monster. It gains 300 ATK/DEF.	Equip					61854111	LOB-EN040	Short Print
+Spell	Beast Fangs	A Beast-Type monster equipped with this card increases its ATK and DEF by 300 points.	Equip					46009906	LOB-EN041	Short Print
+Spell	Violet Crystal	(This card is not treated as a "Crystal" card.) Equip only to a Zombie monster. It gains 300 ATK/DEF	Equip					15052462	LOB-EN042	Short Print
+Spell	Book of Secret Arts	A Spellcaster-Type monster equipped with this card increases its ATK and DEF by 300 points.	Equip					91595718	LOB-EN043	Short Print
+Spell	Power of Kaishin	Equip only to an Aqua monster. It gains 300 ATK/DEF.	Equip					77027445	LOB-EN044	Short Print
+Trap	Dragon Capture Jar	Change all face-up Dragon-Type monsters on the field to Defense Position, also they cannot change their battle positions.	Continuous					50045299	LOB-EN045	Rare
+Spell	Forest	All Insect, Beast, Plant, and Beast-Warrior monsters on the field gain 200 ATK/DEF.	Field					87430998	LOB-EN046	Common
+Spell	Wasteland	All Dinosaur, Zombie, and Rock monsters on the field gain 200 ATK/DEF.	Field					23424603	LOB-EN047	Common
+Spell	Mountain	All Dragon, Winged Beast, and Thunder monsters on the field gain 200 ATK/DEF.	Field					50913601	LOB-EN048	Common
+Spell	Sogen	All Warrior and Beast-Warrior monsters on the field gain 200 ATK/DEF.	Field					86318356	LOB-EN049	Common
+Spell	Umi	All Fish, Sea Serpent, Thunder, and Aqua monsters on the field gain 200 ATK/DEF, also all Machine and Pyro monsters on the field lose 200 ATK/DEF.	Field					22702055	LOB-EN050	Common
+Spell	Yami	All Fiend and Spellcaster monsters on the field gain 200 ATK/DEF, also all Fairy monsters on the field lose 200 ATK/DEF.	Field					59197169	LOB-EN051	Common
+Spell	Dark Hole	Destroy all monsters on the field.	Normal					53129443	LOB-EN052	Super Rare
+Spell	Raigeki	Destroy all monsters your opponent controls.	Normal					12580477	LOB-EN053	Super Rare
+Spell	Red Medicine	Increase your Life Points by 500 points.	Normal					38199696	LOB-EN054	Common
+Spell	Sparks	Inflict 200 points of damage to your opponent's Life Points.	Normal					76103675	LOB-EN055	Common
+Spell	Hinotama Soul	Inflict 500 damage to your opponent.	Normal					46130346	LOB-EN056	Common
+Spell	Fissure	Destroy the 1 face-up monster your opponent controls that has the lowest ATK (your choice, if tied).	Normal					66788016	LOB-EN057	Rare
+Trap	Trap Hole	When your opponent Normal or Flip Summons 1 monster with 1000 or more ATK: Target that monster; destroy that target.	Normal					4206964	LOB-EN058	Super Rare
+Spell	Polymerization	Fusion Summon 1 Fusion Monster from your Extra Deck, using monsters from your hand or field as Fusion Material.	Normal					24094653	LOB-EN059	Super Rare
+Spell	Remove Trap	Select 1 face-up Trap Card on the field and destroy it.	Normal					51482758	LOB-EN060	Common
+Trap	Two-Pronged Attack	Select and destroy 2 of your monsters and 1 of your opponent's monsters.	Normal					83887306	LOB-EN061	Rare
+Monster	Mystical Elf	A delicate elf that lacks offense, but has a terrific defense backed by mystical power.	Spellcaster/Normal	Light	4	800	2000	15025844	LOB-EN062	Super Rare
+Monster	Tyhone	Capable of firing cannonballs from its mouth for long-range attacks, this creature is particularly effective in mountain battles.	Winged Beast/Normal	Wind	4	1200	1400	72842870	LOB-EN063	Common
+Monster	Beaver Warrior	What this creature lacks in size it makes up for in defense when battling in the prairie.	Beast-Warrior/Normal	Earth	4	1200	1500	32452818	LOB-EN064	Common
+Spell	Gravedigger Ghoul	Select up to 2 Monster Card(s) from your opponent's Graveyard. Remove the selected card(s) from play.	Normal					82542267	LOB-EN065	Rare
+Monster	Curse of Dragon	A wicked dragon that taps into dark forces to execute a powerful attack.	Dragon/Normal	Dark	5	2000	1500	28279543	LOB-EN066	Super Rare
+Monster	Karbonala Warrior	"M-Warrior #1" + "M-Warrior #2"	Warrior/Fusion	Earth	4	1500	1200	54541900	LOB-EN067	Rare
+Monster	Giant Soldier of Stone	A giant warrior made of stone. A punch from this creature has earth-shaking results.	Rock/Normal	Earth	3	1300	2000	13039848	LOB-EN068	Rare
+Monster	Uraby	Fast on its feet, this dinosaur rips enemies to shreds with its sharp claws.	Dinosaur/Normal	Earth	4	1500	800	1784619	LOB-EN069	Common
+Monster	Red-Eyes Black Dragon	A ferocious dragon with a deadly attack.	Dragon/Normal	Dark	7	2400	2000	74677422	LOB-EN070	Ultra Rare
+Monster	Reaper of the Cards	FLIP: Select 1 Trap Card on the field and destroy it. If the selected card is Set, pick up and see the card. If it is a Trap Card, it is destroyed. If it is a Spell Card, return it to its original position.	Fiend/Flip/Effect	Dark	5	1380	1930	33066139	LOB-EN071	Rare
+Monster	Witty Phantom	Dressed in a night-black tuxedo, this creature presides over the darkness.	Fiend/Normal	Dark	4	1400	1300	36304921	LOB-EN072	Common
+Monster	Larvas	A fast-moving, bird-like creature that strangles opposing monsters with its long, thin arms.	Beast/Normal	Earth	3	800	1000	94675535	LOB-EN073	Common
+Monster	Hard Armor	A living suit of armor that attacks enemies with a bone-jarring tackle.	Warrior/Normal	Earth	3	300	1200	20060230	LOB-EN074	Common
+Monster	Man Eater	Man-eating plant with poison feelers for attacking enemies.	Plant/Normal	Earth	2	800	600	93553943	LOB-EN075	Common
+Monster	M-Warrior #1	Specializing in combination attacks, this warrior uses magnetism to block an enemy's escape.	Warrior/Normal	Earth	3	1000	500	56342351	LOB-EN076	Common
+Monster	M-Warrior #2	Specializing in combination attacks, this warrior is equipped with a tough, magnetically coated armor.	Warrior/Normal	Earth	3	500	1000	92731455	LOB-EN077	Common
+Monster	Spirit of the Harp	A spirit that soothes the soul with the music of its heavenly harp.	Fairy/Normal	Light	4	800	2000	80770678	LOB-EN078	Rare
+Monster	Armaill	A strange warrior who manipulates three deadly blades with both hands and his tail.	Warrior/Normal	Earth	3	700	1300	53153481	LOB-EN079	Common
+Monster	Terra the Terrible	Known as a swamp dweller, this creature is a minion of the dark forces.	Fiend/Normal	Dark	4	1200	1300	63308047	LOB-EN080	Common
+Monster	Frenzied Panda	A savage beast that carries a big bamboo stick for beating down its enemies.	Beast/Normal	Earth	4	1200	1000	98818516	LOB-EN081	Common
+Monster	Kumootoko	A massive, intelligent spider that traps enemies with webbing.	Insect/Normal	Earth	3	700	1400	56283725	LOB-EN082	Common
+Monster	Meda Bat	An eyeball fiend created by a servant of the wicked, it uses "Dark Blasts" to blow away its enemies.	Fiend/Normal	Dark	2	800	400	76211194	LOB-EN083	Common
+Monster	Enchanting Mermaid	A beautiful mermaid that lures voyagers to a watery grave.	Fish/Normal	Water	3	1200	900	75376965	LOB-EN084	Common
+Monster	Fireyarou	A malevolent creature wrapped in flames that attacks enemies with intense fire.	Pyro/Normal	Fire	4	1300	1000	71407486	LOB-EN085	Common
+Monster	Dragoness the Wicked Knight	"Armaill" + "One-Eyed Shield Dragon"	Warrior/Fusion	Wind	3	1200	900	70681994	LOB-EN086	Rare
+Monster	One-Eyed Shield Dragon	This dragon wears a shield not only for its own protection, but also for ramming its enemies.	Dragon/Normal	Wind	3	700	1300	33064647	LOB-EN087	Common
+Spell	Dark Energy	Increase the ATK and DEF of a Fiend-Type monster equipped with this card by 300 points.	Equip					4614116	LOB-EN088	Short Print
+Spell	Laser Cannon Armor	An Insect-Type monster equipped with this card increases its ATK and DEF by 300 points.	Equip					77007920	LOB-EN089	Short Print
+Spell	Vile Germs	A Plant-Type monster equipped with this card increases its ATK and DEF by 300 points.	Equip					39774685	LOB-EN090	Short Print
+Spell	Silver Bow and Arrow	A Fairy-Type monster equipped with this card increases its ATK and DEF by 300 points.	Equip					1557499	LOB-EN091	Short Print
+Spell	Dragon Treasure	A Dragon-Type monster equipped with this card increases its ATK and DEF by 300 points.	Equip					1435851	LOB-EN092	Short Print
+Spell	Electro-Whip	Increase the ATK and DEF of a Thunder-Type monster equipped with this card by 300 points.	Equip					37820550	LOB-EN093	Short Print
+Spell	Mystical Moon	Equip only to a Beast-Warrior-Type monster. It gains 300 ATK and DEF.	Equip					36607978	LOB-EN094	Short Print
+Spell	Stop Defense	Select 1 Defense Position monster on your opponent's side of the field and change it to Attack Position.	Normal					63102017	LOB-EN095	Rare
+Spell	Machine Conversion Factory	A Machine-Type monster equipped with this card increases its ATK and DEF by 300 points.	Equip					25769732	LOB-EN096	Short Print
+Spell	Raise Body Heat	A Dinosaur-Type monster equipped with this card increases its ATK and DEF by 300 points.	Equip					51267887	LOB-EN097	Super Short Print
+Spell	Follow Wind	ncrease the ATK and DEF of a Winged-Beast-Type monster equipped with this card by 300 points.	Equip					98252586	LOB-EN098	Super Short Print
+Spell	Goblin's Secret Remedy	Increase your Life Points by 600 points.	Normal					11868825	LOB-EN099	Rare
+Spell	Final Flame	Inflict 600 points of damage to your opponent's Life Points.	Normal					73134081	LOB-EN100	Rare
+Spell	Swords of Revealing Light	After this card's activation, it remains on the field, but destroy it during the End Phase of your opponent's 3rd turn. When this card is activated: If your opponent controls a face-down monster, flip all monsters they control face-up. While this card is face-up on the field, your opponent's monsters cannot declare an attack.	Normal					72302403	LOB-EN101	Super Rare
+Monster	Metal Dragon	"Steel Ogre Grotto #1" + "Lesser Dragon"	Machine/Fusion	Wind	6	1850	1700	9293977	LOB-EN102	Rare
+Monster	Spike Seadra	Using the spikes sprouting from its body, this creature stabs its opponents and floods them with electricity.	Sea Serpent/Normal	Water	5	1600	1300	85326399	LOB-EN103	Common
+Monster	Tripwire Beast	This creature attacks with electromagnetic waves.	Thunder/Normal	Earth	4	1200	1300	45042329	LOB-EN104	Common
+Monster	Skull Red Bird	This monster swoops down and attacks with a rain of knives stored in its wings.	Winged Beast/Normal	Wind	4	1550	1200	10202894	LOB-EN105	Common
+Monster	Armed Ninja	FLIP: Target 1 Spell Card on the field; destroy that target. (If the target is Set, reveal it, and destroy it if it is a Spell Card. Otherwise, return it to its original position.)	Warrior/Flip/Effect	Earth	1	300	300	9076207	LOB-EN106	Rare
+Monster	Flower Wolf	"Silver Fang" + "Darkworld Thorns"	Beast/Fusion	Earth	5	1800	1400	95952802	LOB-EN107	Rare
+Monster	Man-Eater Bug	FLIP: Target 1 monster on the field; destroy that target.	Insect/Flip/Effect	Earth	2	450	600	54652250	LOB-EN108	Super Rare
+Monster	Sand Stone	Appears from underground and attacks with long, snake-like tentacles.	Rock/Normal	Earth	5	1300	1600	73051941	LOB-EN109	Common
+Monster	Hane-Hane	FLIP: Select 1 monster on the field and return it to its owner's hand.	Beast/Flip/Effect	Earth	2	450	500	7089711	LOB-EN110	Rare
+Monster	Misairuzame	A missile-launching fish protected by deadly spikes.	Fish/Normal	Water	5	1400	1600	33178416	LOB-EN111	Common
+Monster	Steel Ogre Grotto #1	A steel idol worshipped in the Land of Machines.	Machine/Normal	Earth	5	1400	1800	29172562	LOB-EN112	Common
+Monster	Lesser Dragon	A minor dragon incapable of breathing fire.	Dragon/Normal	Wind	4	1200	100	55444629	LOB-EN113	Common
+Monster	Darkworld Thorns	A thorny plant found in the darklands that wraps itself around any unwary traveler.	Plant/Normal	Earth	3	1200	900	43500484	LOB-EN114	Common
+Monster	Drooling Lizard	A blood-sucking snake in human form that attacks any living being that passes nearby.	Reptile/Normal	Earth	3	900	800	16353197	LOB-EN115	Common
+Monster	Armored Starfish	A bluish starfish with a solid hide capable of fending off attacks.	Aqua/Normal	Water	4	850	1400	17535588	LOB-EN116	Common
+Monster	Succubus Knight	A warrior wizard adept in casting bone-chilling spells.	Warrior/Normal	Dark	5	1650	1300	55291359	LOB-EN117	Common
+Spell	Monster Reborn	Target 1 monster in either GY; Special Summon it.	Normal					83764718	LOB-EN118	Ultra Rare
+Spell	Pot of Greed	Draw 2 cards.	Normal					55144522	LOB-EN119	Rare
+Monster	Right Leg of the Forbidden One	A forbidden right leg sealed by magic. Whosoever breaks this seal will know infinite power.	Spellcaster/Normal	Dark	1	200	300	8124921	LOB-EN120	Ultra Rare
+Monster	Left Leg of the Forbidden One	A forbidden left leg sealed by magic. Whosoever breaks this seal will know infinite power.	Spellcaster/Normal	Dark	1	200	300	44519536	LOB-EN121	Ultra Rare
+Monster	Right Arm of the Forbidden One	A forbidden right arm sealed by magic. Whosoever breaks this seal will know infinite power.	Spellcaster/Normal	Dark	1	200	300	70903634	LOB-EN122	Ultra Rare
+Monster	Left Arm of the Forbidden One	A forbidden left arm sealed by magic. Whosoever breaks this seal will know infinite power.	Spellcaster/Normal	Dark	1	200	300	7902349	LOB-EN123	Ultra Rare
+Monster	Exodia the Forbidden One	If you have "Right Leg of the Forbidden One", "Left Leg of the Forbidden One", "Right Arm of the Forbidden One" and "Left Arm of the Forbidden One" in addition to this card in your hand, you win the Duel.	Spellcaster/Normal	Dark	3	1000	1000	33396948	LOB-EN124	Ultra Rare
+Monster	Gaia the Dragon Champion	"Gaia The Fierce Knight" + "Curse of Dragon"	Dragon/Fusion	Wind	7	2600	2100	66889139	LOB-EN125	Secret Rare
