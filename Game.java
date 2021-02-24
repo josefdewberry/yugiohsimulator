@@ -311,10 +311,12 @@ public class Game {
         for (int i = 0; i < p1.monsterZones.size(); i++) {
             p1.monsterZones.get(i).switched = false;
             p1.monsterZones.get(i).attacked = false;
+            p1.monsterZones.get(i).summoned = false;
         }
         for (int i = 0; i < p2.monsterZones.size(); i++) {
             p2.monsterZones.get(i).switched = false;
             p2.monsterZones.get(i).attacked = false;
+            p2.monsterZones.get(i).summoned = false;
         }
 
         // Reset the player flags
