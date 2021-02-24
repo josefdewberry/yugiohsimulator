@@ -96,13 +96,13 @@ public enum RPS {
             // same time. Maybe I'LL DO THIS LATER!!!!!!
             while(findMatch(rps1) ==  null) {
                 p1.noResponse("Inproper input.");
-                rps1 = p1.needResponse("(R)ock, (P)aper, or (S)cissors?");
+                p1.needResponse("(R)ock, (P)aper, or (S)cissors?");
                 rps1 = p1.in.readLine();
             }
     
             while(findMatch(rps2) == null) {
                 p2.noResponse("Inproper input.");
-                rps2 = p2.needResponse("(R)ock, (P)aper, or (S)cissors?");
+                p2.needResponse("(R)ock, (P)aper, or (S)cissors?");
                 rps2 = p2.in.readLine();
             }
 

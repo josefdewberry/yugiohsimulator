@@ -94,8 +94,27 @@ public class Card implements Serializable {
      * 
      * @return The rarity.
      */
-    private Rarity getRarity() {
+    public Rarity getRarity() {
         return rarity;
+    }
+
+    /**
+     * Returns a detailed one line string of a card, for displaying in a player's hand
+     * or on the field.
+     * 
+     * @param c The card to turn into a string.
+     * @return The card as a string.
+     */
+    public static String detailedString(Card card) {
+        if (card.getCardType() == CardType.MONSTER) {
+            MonsterCard c = (MonsterCard) card;
+            return "[" + c.getCardType() + "] " + c.getName() + " - " + c.getAtk() + "/" 
+                   + c.getDef() + " - " + c.getAttribute() + " Level " + c.getLevel() + " " 
+                   + c.getType();
+        } else {
+            BackrowCard c = (BackrowCard) card;
+            return "[" + c.getCardType() + "] " + c.getName() + " - " + c.getProperty();
+        }
     }
 
     /**
@@ -165,6 +184,29 @@ public class Card implements Serializable {
         public int getDef() {
             return def;
         }
+
+        /**
+         * Attribute getter.
+         * 
+         * @return The attribute.
+         */   
+        public Attribute getAttribute() {
+            return attribute;
+        }
+
+        /**
+         * Type getter.
+         * 
+         * @return The types value.
+         */   
+        public String getType() {
+            String s = "";
+            for (Type t : type) {
+                s += t.toString() + "/";
+            }
+            s = s.substring(0, s.length() - 1);
+            return s;
+        }
         
         /**
          * Converts the card to a string with all of it's properties pertinent to a duel
@@ -219,6 +261,15 @@ public class Card implements Serializable {
             this.property = property;
         }
     
+        /**
+         * Property getter.
+         * 
+         * @return The Property.
+         */   
+        public Property getProperty() {
+            return property;
+        }
+
         /**
          * Turns the spell/trap card to a string.
          * 

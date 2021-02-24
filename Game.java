@@ -164,20 +164,23 @@ public class Game {
         // Notify the player of the phase.
         p1.noResponse("Main Phase " + phase);
         p2.noResponse("Opponents Main Phase " + phase);
+        p1.noResponse("");
+        p2.noResponse("");
         
         // Set a place holder action.
         Action action = Action.TURNSTART;
+
+        // Display the turn player's hand so they know their possibilities.
+        p1.displayHand();
 
         // The player can do certain actions indefinitely until they decide to end their 
         // main phase.
         do {
 
-            // Display the turn player's hand so they know their possibilities.
-            p1.displayHand();
-            p1.noResponse("");
             // Get the player's input.
             p1.needResponse("What would you like to do?");
             action = Action.findMatch(p1.in.readLine());
+            p1.noResponse("");
 
             // This loop was earlier in the method, but it would save time having to 
             // check over every single available action if we just check immediately
@@ -187,6 +190,7 @@ public class Game {
                 p1.noResponse("");
                 p1.needResponse("What would you like to do?");
                 action = Action.findMatch(p1.in.readLine());
+                p1.noResponse("");
             }
             
             // A player may normal summon, provided they haven't already that turn.
@@ -195,7 +199,8 @@ public class Game {
             // A player can check the field indefinitely.
             } else if (action == Action.CHECKFIELD) {
                 p1.checkField(p2);
-            // A player can check their hand indefinitely.
+            // A player can check their hand indefinitely. This is blank because
+            // when this while loop loops, the hand is shown by default.
             } else if (action == Action.CHECKHAND) {
                 p1.displayHand();
             // A player can check their graveyard indefinitely.
@@ -210,8 +215,16 @@ public class Game {
                 p1.tributeSummon(p2);
             // A player can enter their battle phase, provided it is main phase 1, and not
             // the first turn of the duel.
-            } else if (action == Action.BATTLEPHASE && phase == 1 && !firstTurn) {
-                battlePhase(p1, p2);
+            } else if (action == Action.BATTLEPHASE) {
+                if (firstTurn) {
+                    p1.noResponse("You can't enter the Battle Phase on the first turn.");
+                    p1.noResponse("");
+                } else if (phase == 2) {
+                    p1.noResponse("You can't enter your Battle Phase during Main Phase 2");
+                    p1.noResponse("");
+                } else {
+                    battlePhase(p1, p2);
+                }
             // A player can switch the positions of one of their monsters, provided they weren't
             // summoned this turn and haven't switched their position already this turn.
             } else if (action == Action.SWITCHPOSITION) {
@@ -255,12 +268,20 @@ public class Game {
                 action = Action.findMatch(p1.in.readLine());
             }
             
-            // The only 2 actions a user can make currently are to attack or end their 
-            // battle phase.
+            // The only 2 actions a user can make currently are to attack,end their 
+            // battle phase, or check the field as many times as they want.
             if (action == Action.ATTACK) {
                 p1.attack(p2);
             } else if (action == Action.MAINPHASE) {
                 mainPhase(p1, p2, 2);
+            } else if (action == Action.CHECKFIELD) {
+                p1.checkField(p2);
+            } else if (action == Action.CHECKHAND) {
+                p1.displayHand();
+            } else if (action == Action.CHECKGY) {
+                p1.checkGraveyard();
+            } else if (action == Action.CHECKOPPGY) {
+                p1.checkGraveyard(p2);
             }
         } while (action == null || action != Action.ENDTURN);
 

@@ -99,8 +99,12 @@ public class Player {
         }
 
         // Build the deck and extra deck.
-        p1.deck = PlayerBuilder.buildDeck(f1);
-        p2.deck = PlayerBuilder.buildDeck(f2);
+        ArrayList<Card>[] decks1 = PlayerBuilder.buildDeck(f1);
+        ArrayList<Card>[] decks2 = PlayerBuilder.buildDeck(f2);
+        p1.deck = decks1[0];
+        p2.deck = decks2[0];
+        p1.extraDeck = decks1[1];
+        p2.extraDeck = decks2[1];
 
         // Let the user know their deck size and extra deck size. This is just a quick
         // and simple way for the user to know if something has gone wrong and their deck
@@ -129,13 +133,11 @@ public class Player {
      * an immediate response.
      * 
      * @param s The message to be printed.
-     * @return The client's response.
      * @throws IOException If something goes wrong passing input/output with the clients.
      */
-    public String needResponse(String s) throws IOException {
+    public void needResponse(String s) throws IOException {
         out.println(s);
         out.println("respond");
-        return in.readLine();
     }
 
     /**
@@ -146,7 +148,7 @@ public class Player {
     public void displayHand() throws IOException {
         noResponse("Hand:");
         for (int i = 0; i < hand.size(); i++) {
-            noResponse(hand.get(i).getName());
+            noResponse(Card.detailedString(hand.get(i)));
         }
         noResponse("");
     }
@@ -261,9 +263,8 @@ public class Player {
             noResponse("");
         } else {
             noResponse("Your Field:");
-            noResponse("");
             for (int i = 0; i < monsterZones.size(); i++) {
-                noResponse(monsterZones.get(i).card.getName() + monsterZones.get(i).position.toString());
+                noResponse(Card.detailedString(monsterZones.get(i).card) + monsterZones.get(i).position.toString());
             }
             noResponse("");
         }
@@ -305,10 +306,9 @@ public class Player {
             noResponse("");
         } else {
             noResponse("Opponent's Field:");
-            noResponse("");
             for (int i = 0; i < p2.monsterZones.size(); i++) {
                 if (p2.monsterZones.get(i).position != Position.SET) {
-                    noResponse(p2.monsterZones.get(i).card.getName() + p2.monsterZones.get(i).position.toString());
+                    noResponse(Card.detailedString(p2.monsterZones.get(i).card) + p2.monsterZones.get(i).position.toString());
                 } else {
                     noResponse("A set monster.");
                 }
@@ -445,7 +445,7 @@ public class Player {
                     return true;
                 // If the opponent does have monsters, battle will have to be done.
                 } else {
-                    return battle(Player p2, int cardPosition);
+                    return battle(p2, i);
                 }
             }
         }
@@ -454,15 +454,15 @@ public class Player {
         return false;
     }
 
-    public boolean battle(Player p2, int cardPosition) {
+    public boolean battle(Player p2, int cardPosition) throws IOException {
 
         // Make a separate monster card object for ease of access.
-        MonsterCard attackingCard = (MonsterCard) monsterZones.get(i).card;
+        MonsterCard attackingCard = (MonsterCard) monsterZones.get(cardPosition).card;
 
         // Get the monster to be attacked.
         needResponse("What monster would you like to attack?");
         String name = in.readLine();
-        noReponse("");
+        noResponse("");
         // If the player want's to attack a set monster, proceed.
         if (name.equalsIgnoreCase("set monster") || name.equalsIgnoreCase("a set monster")) {
             ArrayList<Card> setCards = new ArrayList<Card>();
@@ -502,7 +502,7 @@ public class Player {
                             noResponse(attackingCard.getName() + " attacks your opponent's set " + card.getName());
                             p2.noResponse("Your opponent's " + attackingCard.getName() + " attacks your set " + card.getName());
                             // The monster has declared an attack and cannot attack again this turn.
-                            monsterZones.get(i).attacked = true;
+                            monsterZones.get(cardPosition).attacked = true;
                             // If the attacking monsters attack is greater than the set monster's defense,
                             // destroy the set monster.
                             if (attackingCard.getAtk() > card.getDef()) {
@@ -551,7 +551,7 @@ public class Player {
                         p2.noResponse("Both monsters were destroyed.");
                         noResponse("");
                         p2.noResponse("");
-                        graveyard.add(monsterZones.remove(i).card);
+                        graveyard.add(monsterZones.remove(cardPosition).card);
                         p2.graveyard.add(p2.monsterZones.remove(j).card);
                     // If the attacking monster's attack value is greater, the opponent
                     // takes the difference as damage. Also the defending monster is destroyed.
@@ -561,7 +561,7 @@ public class Player {
                         noResponse("");
                         p2.noResponse("");
                         p2.graveyard.add(p2.monsterZones.remove(j).card);
-                        monsterZones.get(i).attacked = true;
+                        monsterZones.get(cardPosition).attacked = true;
                         p2.lifePoints -= (attackingCard.getAtk() - defendingCard.getAtk());
                         noResponse("Your opponent's lifepoints are now " + p2.lifePoints);
                         p2.noResponse("Your lifepoints are now " + p2.lifePoints);
@@ -572,7 +572,7 @@ public class Player {
                         p2.noResponse("Your opponent's " + attackingCard.getName() + " was destroyed.");
                         noResponse("");
                         p2.noResponse("");
-                        graveyard.add(monsterZones.remove(i).card);
+                        graveyard.add(monsterZones.remove(cardPosition).card);
                         lifePoints -= (defendingCard.getAtk() - attackingCard.getAtk());
                         noResponse("Your lifepoints are now " + lifePoints);
                         p2.noResponse("Your opponent's lifepoints are now " + lifePoints);

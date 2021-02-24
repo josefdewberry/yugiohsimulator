@@ -21,7 +21,7 @@ public class PlayerBuilder {
      * @param f The properly formatted .ydk file.
      * @return The deck.
      */
-    public static ArrayList<Card> buildDeck(File f) {
+    public static ArrayList<Card>[] buildDeck(File f) {
         
         // Reading files can go poorly.
         try {
@@ -38,6 +38,8 @@ public class PlayerBuilder {
             // Set up the empty deck.
             ArrayList<Card> deck = new ArrayList<Card>();
             ArrayList<Card> extraDeck = new ArrayList<Card>();
+
+            ArrayList<Card>[] decks = new ArrayList[2];
             
             // Read from the file...
             while (scanner.hasNextLine()) {
@@ -45,6 +47,7 @@ public class PlayerBuilder {
                 // Until we hit the extra deck section.
                 String tempCode = scanner.nextLine();
                 if (tempCode.equals("#extra")) {
+                    decks[0] = deck;
                     // Build the extra deck.
                     tempCode = scanner.nextLine();
                     // Currently there is no functionality for a side deck, which is used
@@ -55,9 +58,13 @@ public class PlayerBuilder {
                             if (cards.get(i).getCode() == code) {
                                 extraDeck.add(cards.get(i));
                                 tempCode = scanner.nextLine();
+                                break;
                             }
                         }
                     }
+                    // Return the completed deck.
+                    decks[1] = extraDeck;
+                    return decks;
                 }
                 
                 // Add the cards 1 by 1 into the deck.
@@ -71,8 +78,8 @@ public class PlayerBuilder {
 
             }
 
-            // Return the constructed deck.
-            return deck;
+            // Return the constructed deck. The program shouldn't actually hit this part.
+            return decks;
 
         } catch (Exception e) {
             System.out.println(e.toString());
