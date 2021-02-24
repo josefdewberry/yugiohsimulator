@@ -266,7 +266,7 @@ public class Player {
             noResponse("Your Field:");
             noResponse("");
             for (int i = 0; i < monsterZones.size(); i++) {
-                noResponse(monsterZones.get(i).card.getName() + Position.toString(monsterZones.get(i).position));
+                noResponse(monsterZones.get(i).card.getName() + monsterZones.get(i).position.toString());
             }
             noResponse("");
         }
@@ -311,7 +311,7 @@ public class Player {
             noResponse("");
             for (int i = 0; i < p2.monsterZones.size(); i++) {
                 if (p2.monsterZones.get(i).position != Position.SET) {
-                    noResponse(p2.monsterZones.get(i).card.getName() + Position.toString(p2.monsterZones.get(i).position));
+                    noResponse(p2.monsterZones.get(i).card.getName() + p2.monsterZones.get(i).position.toString());
                 } else {
                     noResponse("A set monster.");
                 }
@@ -329,46 +329,66 @@ public class Player {
         }
     }
 
+    /**
+     * Switch the position of a monster.
+     * 
+     * @param p2 Player 2.
+     * @throws IOException If something goes wrong passing input/output with the clients.
+     */
     public void switchPosition(Player p2) throws IOException {
 
+        // If there are no monster's to switch, back out.
         if (monsterZones.size() == 0) {
             noResponse("You have no monsters to switch position.");
             noResponse("");
             return;
         }
+
+        // Get the user's input.
         needResponse("What monster would you like to switch?");
         String name = in.readLine();
 
+        // Find the monster on the player's field.
         for (int i = 0; i < monsterZones.size(); i++) {
             if (monsterZones.get(i).card.getName().equalsIgnoreCase(name)) {
+                // If the monster has already switched positions this turn, back out.
                 if (monsterZones.get(i).switched) {
                     noResponse("That monster has already switched positions this turn.");
                     noResponse("");
                     return;
                 }
+                // If the monster has attacked this turn, back out.
                 if (monsterZones.get(i).attacked) {
                     noResponse("Monsters cannot change position if they've attacked this turn.");
                     noResponse("");
                     return;
                 }
+                // Switch the position of the monster. Attack position monsters change to
+                // face-up defense position.
                 if (monsterZones.get(i).position == Position.ATK) {
                     monsterZones.get(i).position = Position.UPDEF;
                     noResponse("You switched your " + monsterZones.get(i).card.getName() + " to defense position");
                     p2.noResponse("Your opponent switched their " + monsterZones.get(i).card.getName() + " to defense position");
+                // Face-up defense position monsters change to attack position.
                 } else if (monsterZones.get(i).position == Position.UPDEF) {
                     monsterZones.get(i).position = Position.ATK;
                     noResponse("You switched your " + monsterZones.get(i).card.getName() + " to attack position");
                     p2.noResponse("Your opponent switched their " + monsterZones.get(i).card.getName() + " to attack position");
+                // Set monsters change to face-up attack position.
                 } else {
                     monsterZones.get(i).position = Position.ATK;
                     noResponse("You switched your set card " + monsterZones.get(i).card.getName() + " to attack position");
                     p2.noResponse("Your opponent switched their set card " + monsterZones.get(i).card.getName() + " to attack position");
                 }
+                // Set the monster's switched flag so it can't be switched again this turn.
                 monsterZones.get(i).switched = true;
+                noResponse("");
+                p2.noResponse("");
                 return;
             }
         }
-        noResponse("Card not found.");
+        // If the monster can't be found, back out.
+        noResponse("Monster not found.");
         noResponse("");
         return;
     }
@@ -526,52 +546,72 @@ public class Player {
         return false;
     }
 
+    /**
+     * Normal summon a monster if possible.
+     * 
+     * @param p2 The opponent.
+     * @return Whether the normal summon was done successfully.
+     * @throws IOException If something goes wrong passing input/output with the clients.
+     */
     public boolean normalSummon(Player p2) throws IOException {
 
+        // If the player has used their normal summon they can't summon again.
         if (normalSummoned) {
             noResponse("You've already normal summoned this turn.");
             noResponse("");
             return true;
         }
 
+        // If the field is full the player can't normal summon.
         if (monsterZones.size() >= 5) {
             noResponse("There is no room to summon a monster.");
             noResponse("");
             return false;
         }
 
+        // Get the user's input.
         needResponse("What monster would you like to normal summon?");
         String name = in.readLine();
 
+        // Fine the matching card in the user's hand.
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).getName().equalsIgnoreCase(name)) {
+                // If the card is found, make a duplicate for ease of access.
                 if (hand.get(i).getCardType() == CardType.MONSTER) {
                     MonsterCard card = (MonsterCard) hand.get(i);
+                    // If the level is greater than 4 then the user needs to tribute for that
+                    // monster.
                     if (card.getLevel() > 4) {
                         noResponse("You need to tribute summon that monster.");
                         noResponse("");
                         return false;
+                    // If the proper card was found, ask what position to summon the monster.
                     } else {
                         needResponse("(atk) or face-down (def) position?");
                         Position position = Position.findMatch(in.readLine());
+                        // If the position input was invalid, back out of the summon.
                         if (position == null) {
                             noResponse("Invalid input.");
                             noResponse("");
                             return false;
                         }
 
+                        // If the position was valid, display the proper messages.
                         if (position == Position.ATK) {
-                            noResponse("You normal summoned " + card.getName());
-                            p2.noResponse("Your opponent normal summoned " + card.getName());
+                            noResponse("You normal summoned " + card.getName() + ".");
+                            p2.noResponse("Your opponent normal summoned " + card.getName() + ".");
                         } else {
                             noResponse("You set " + card.getName());
-                            p2.noResponse("Your opponent set a monster");
+                            p2.noResponse("Your opponent set a monster.");
 
                         }
+                        noResponse("");
+                        p2.noResponse("");
                         monsterZones.add(new MonsterZone(hand.remove(i), position));
                         normalSummoned = true;
                         return true;
                     }
+                // If the card was found but isn't a monster, back out of the summon.
                 } else {
                     noResponse("That's not a monster.");
                     noResponse("");
@@ -579,7 +619,9 @@ public class Player {
                 }
             }
         }
-
+        // If the card couldn't be found, back out of the summon.
+        noResponse("Card not found.");
+        noResponse("");
         return false;
     }
 

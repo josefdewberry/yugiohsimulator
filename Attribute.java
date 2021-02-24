@@ -1,6 +1,14 @@
 package yugioh;
 
+/**
+ * An enum for the 6 current attributes in the game.
+ * 
+ * @author josefdewberry
+ */
 public enum Attribute {
+    
+    // The attributes. They don't need a toString() method because the printing of attributes
+    // happens to follow the proper capitalzation of enums, all caps.
     DARK,
     LIGHT,
     EARTH,
@@ -8,6 +16,12 @@ public enum Attribute {
     WIND,
     WATER;
 
+    /**
+     * Find a matching attribute given a string.
+     * 
+     * @param s The given string.
+     * @return The matching attribute.
+     */
     public static Attribute findMatch(String s) {
         if (s.equals("Dark")) { return Attribute.DARK; }
         else if (s.equals("Light")) { return Attribute.LIGHT; }

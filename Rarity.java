@@ -1,6 +1,15 @@
 package yugioh;
 
+/**
+ * The raritys a card can have in a given set. This has no bearing on a duel
+ * but will be useful if I implement some sort of card searcher in the future.
+ * 
+ * @author josefdewberry
+ */
 public enum Rarity {
+
+    // The raritys, not really in any order. toString() methods will need to be made
+    // if these are ever the be printed.
     COMMON,
     RARE,
     SECRETRARE,
@@ -9,6 +18,12 @@ public enum Rarity {
     SUPERSHORTPRINT,
     ULTRARARE;
 
+    /**
+     * Find the appropriate rarity given a string.
+     * 
+     * @param s The given string.
+     * @return The appropriate rarity.
+     */
     public static Rarity findMatch(String s) {
         if (s.equals("Common")) { return Rarity.COMMON; }
         else if (s.equals("Rare")) { return Rarity.RARE; }

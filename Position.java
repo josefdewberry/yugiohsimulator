@@ -1,17 +1,30 @@
 package yugioh;
 
+/**
+ * The positions a monster can have when played.
+ * 
+ * @author josefdewberry
+ */
 public enum Position {
-    ATK,
-    UPDEF,
-    SET;
 
-    public static String toString(Position p) {
-        if (p == ATK) return " in attack position.";
-        else if (p == UPDEF) return " in face-up defense position.";
-        else if (p == SET) return " in face-down defense position.";
-        else return null;
-    }
+    // The positions. The toString() methods are used for checking the field. 
+    ATK {
+        public String toString() { return " in attack position."; }
+    },
+    // Defense monsters can be both face-up or face-down (set).
+    UPDEF {
+        public String toString() { return " in face-up defense position."; }
+    },
+    SET {
+        public String toString() { return " in face-down defense position."; }
+    };
 
+    /**
+     * Find a matching position given a string.
+     * 
+     * @param s The given string.
+     * @return The matching position.
+     */
     public static Position findMatch(String s) {
         if (s.equalsIgnoreCase("atk")) return ATK;
         else if (s.equalsIgnoreCase("def")) return SET;
