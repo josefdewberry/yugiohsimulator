@@ -13,8 +13,16 @@ import yugioh.CardType;
 import yugioh.MonsterZone;
 import yugioh.PlayerBuilder;
 
+/**
+ * The player object contains nearly all the information about a given player, including the
+ * cards in their deck, hand, and field, as well as their life points and whether or not
+ * they have completed certain actions within that turn or not.
+ * 
+ * @author josefdewberry
+ */
 public class Player {
     
+    // All the socket things which allow us to input/output with the player.
     public Socket s;
     public BufferedReader in;
     public BufferedReader keyboard;
@@ -22,16 +30,25 @@ public class Player {
     public ObjectInputStream dataIn;
     public ObjectOutputStream dataOut;
 
+    // All of the information dealing with where the player's cards are at a given moment.
     public ArrayList<Card> deck;
     public ArrayList<Card> extraDeck;
     public ArrayList<Card> hand;
     public ArrayList<MonsterZone> monsterZones;
     public ArrayList<Card> graveyard;
 
+    // Misc. information about the player pertinent to the game.
     public boolean normalSummoned;
     int lifePoints;
 
+    /**
+     * Player constructor which sets up the input/output as well as basic
+     * game things.
+     * @param s The socket connection.
+     */
     public Player(Socket s) throws IOException {
+
+        // Set up the socket and all of its input/output.
         this.s = s;
         in = new BufferedReader(new InputStreamReader(s.getInputStream()));
         out = new PrintWriter(s.getOutputStream(), true);
@@ -39,14 +56,36 @@ public class Player {
         dataOut = new ObjectOutputStream(s.getOutputStream());
         dataIn = new ObjectInputStream(s.getInputStream());
         
+        // When the game starts we can assume that the player's hand and field will be empty.
+        hand = new ArrayList<Card>();
+        monsterZones = new ArrayList<MonsterZone>();
+        graveyard = new ArrayList<Card>();
+
+        // A player starts the game having NOT summoned, of course.
+        normalSummoned = false;
+        // Standard yugioh games have each player at 8000 life points.
+        lifePoints = 8000;
     }
 
+    /**
+     * A static method allowing each player to build their deck from a .ydk file, which
+     * the player gives. Both players can use the same deck file. We do this statically
+     * because if we put it in the constructor then player 1 would have to input their
+     * deck file before player 2, where as here we can do it simultaneously.
+     * @param p1 Player 1.
+     * @param p2 Player 2.
+     * @throws IOException If something goes wrong passing input/output with the clients.
+     */
     public static void buildDecks(Player p1, Player p2) throws IOException {
+        // Get the name of the deck file from the users.
         p1.needResponse("What is your deck file?");
         p2.needResponse("What is your deck file?");
         File f1 = new File("./yugioh/Decks/" + p1.in.readLine());
         File f2 = new File("./yugioh/Decks/" + p2.in.readLine());
 
+        // If the file doesn't exist, reprompt them until it does. Unfortunately, if both files
+        // are invalid, player 2 won't know until player 1 inputs a valid one. This could be
+        // solved with a third while loop which I COULD MAYBE DO LATER!!!!!!!
         while (!f1.exists()) {
             p1.noResponse("Sorry, I couldn't find that file.");
             p1.needResponse("What is your deck file?");
@@ -59,55 +98,73 @@ public class Player {
             f2 = new File("./yugioh/Decks/" + p2.in.readLine());
         }
 
+        // Build the deck and extra deck.
         p1.deck = PlayerBuilder.buildDeck(f1);
         p1.extraDeck = PlayerBuilder.buildExtraDeck(f1);
 
         p2.deck = PlayerBuilder.buildDeck(f2);
         p2.extraDeck = PlayerBuilder.buildExtraDeck(f2);
 
+        // Let the user know their deck size and extra deck size. This is just a quick
+        // and simple way for the user to know if something has gone wrong and their deck
+        // isn't the size it should be.
         p1.noResponse("Deck size: " + p1.deck.size());
         p1.noResponse("Extra deck size: " + p1.extraDeck.size());
 
         p2.noResponse("Deck size: " + p2.deck.size());
         p2.noResponse("Extra deck size: " + p2.extraDeck.size());
-
-        p1.hand = new ArrayList<Card>();
-        p2.hand = new ArrayList<Card>();
-
-        p1.monsterZones = new ArrayList<MonsterZone>();
-        p2.monsterZones = new ArrayList<MonsterZone>();
-
-        p1.graveyard = new ArrayList<Card>();
-        p2.graveyard = new ArrayList<Card>();
-
-        p1.normalSummoned = false;
-        p2.normalSummoned = false;
-
-        p1.lifePoints = 8000;
-        p2.lifePoints = 8000;
     }
 
+    /**
+     * The method used when we want to print a message to the client but don't expect
+     * a response.
+     * 
+     * @param s The message to be printed.
+     * @throws IOException If something goes wrong passing input/output with the clients.
+     */
     public void noResponse(String s) throws IOException {
         out.println(s);
         out.println("no response");
     }
 
-    public void needResponse(String s) throws IOException {
+    /**
+     * The method we use when we want to print a message to the client and expect
+     * an immediate response.
+     * 
+     * @param s The message to be printed.
+     * @return The client's response.
+     * @throws IOException If something goes wrong passing input/output with the clients.
+     */
+    public String needResponse(String s) throws IOException {
         out.println(s);
         out.println("respond");
+        return in.readLine();
     }
 
+    /**
+     * Display the names of the cards in the player's hand.
+     * 
+     * @throws IOException If something goes wrong passing input/output with the clients.
+     */
     public void displayHand() throws IOException {
-        noResponse("");
         noResponse("Hand:");
         for (int i = 0; i < hand.size(); i++) {
             noResponse(hand.get(i).getName());
         }
+        noResponse("");
     }
 
+    /**
+     * Discard a card from the hand. Returns false if the card can't be found.
+     * 
+     * @param s The card name to be discarded.
+     * @return Whether the card was successfully discarded.
+     */
     public boolean discard(String s) {
+        // Iterate over the player's hand to find the card.
         for (int i = 0; i < hand.size(); i++) {
             if (hand.get(i).getName().equalsIgnoreCase(s)) {
+                // A discarded card goes to the graveyard.
                 graveyard.add(hand.remove(i));
                 return true;
             }
@@ -115,96 +172,161 @@ public class Player {
         return false;
     }
 
+    /**
+     * Shuffle the player's deck.
+     */
     public void shuffle() {
         Collections.shuffle(deck);
     }
 
-    public void draw() {
-        hand.add(deck.remove(0));
+    /**
+     * Draw a card, moving it from the top of the deck to the hand. If there are no cards
+     * to draw, then the drawing player loses.
+     */
+    public boolean draw() {
+        if (deck.size() <= 0) {
+            return false;
+        } else {
+            hand.add(deck.remove(0));
+            return true;
+        }
     }
 
+    /**
+     * Display the player's graveyard.
+     * 
+     * @throws IOException If something goes wrong passing input/output with the clients.
+     */
     public void checkGraveyard() throws IOException {
 
+        // If there are no cards in the opponent's graveyard, display a special message.
         if (graveyard.size() == 0) {
-            noResponse("");
             noResponse("There are no cards in your graveyard.");
-        } else {
             noResponse("");
+        } else {
             noResponse("Graveyard:");
+            noResponse("");
             for (int i = 0; i < graveyard.size(); i++) {
                 noResponse(graveyard.get(i).getName());
             }
+            noResponse("");
         }
     }
 
+    /**
+     * Display the opponent's graveyard.
+     * 
+     * @param p2 The opponent.
+     * @throws IOException If something goes wrong passing input/output with the clients.
+     */
     public void checkGraveyard(Player p2) throws IOException {
 
+        // If there are no cards in the opponent's graveyard, display a special message.
         if (p2.graveyard.size() == 0) {
-            noResponse("");
             noResponse("There are no cards in your opponent's graveyard.");
-        } else {
             noResponse("");
+        } else {
             noResponse("Opponent's Graveyard:");
+            noResponse("");
             for (int i = 0; i < p2.graveyard.size(); i++) {
                 noResponse(p2.graveyard.get(i).getName());
             }
+            noResponse("");
         }
     }
 
+    /**
+     * Display the field, which includes the cards currently played, the number of cards
+     * in both player's graveyards, the number of cards in the opponent's hand, and both
+     * player's lifepoints.
+     * 
+     * @param p2 The opponent.
+     * @throws IOException If something goes wrong passing input/output with the clients.
+     */
     public void checkField(Player p2) throws IOException {
 
+        //Display the number of lifepoints the player has.
+        noResponse("You have " + lifePoints + " life points.");
         noResponse("");
 
-        if (monsterZones.size() == 0) {
+        // Display the number of cards in the player's deck.
+        if (deck.size() == 1) {
+            noResponse("You have 1 card in your deck.");
             noResponse("");
-            noResponse("You have no monsters on your field.");
         } else {
+            noResponse("You have " + deck.size() + " cards in your deck.");
             noResponse("");
+        }
+
+        // Display the monsters on the player's field.
+        if (monsterZones.size() == 0) {
+            noResponse("You have no monsters on your field.");
+            noResponse("");
+        } else {
             noResponse("Your Field:");
+            noResponse("");
             for (int i = 0; i < monsterZones.size(); i++) {
                 noResponse(monsterZones.get(i).card.getName() + Position.toString(monsterZones.get(i).position));
             }
+            noResponse("");
         }
 
+        // Display the number of cards in the player's graveyard.
         if (graveyard.size() == 1) {
-            noResponse("");
             noResponse("You have 1 card in your graveyard.");
-        } else {
             noResponse("");
+        } else {
             noResponse("You have " + graveyard.size() + " cards in your graveyard");
+            noResponse("");
         }
 
-        if (p2.monsterZones.size() == 0) {
+        // Display the opponent's life points.
+        noResponse("Your opponent has " + p2.lifePoints + " life points.");
+        noResponse("");
+
+        // Display the number of cards in the opponent's hand.
+        if (p2.hand.size() == 1) {
+            noResponse("Your oppenent has 1 card in hand.");
             noResponse("");
-            noResponse("Your opponent has no monsters on their field.");
         } else {
+            noResponse("Your opponent has " + p2.hand.size() + " cards in hand.");
             noResponse("");
+        }
+
+        // Display the number of cards in the player's deck.
+        if (p2.deck.size() == 1) {
+            noResponse("Your opponent has 1 card in their deck.");
+            noResponse("");
+        } else {
+            noResponse("Your opponent has " + p2.deck.size() + " cards in their deck.");
+            noResponse("");
+        }
+
+        // Display the monsters on the opponent's field.
+        if (p2.monsterZones.size() == 0) {
+            noResponse("Your opponent has no monsters on their field.");
+            noResponse("");
+        } else {
             noResponse("Opponent's Field:");
+            noResponse("");
             for (int i = 0; i < p2.monsterZones.size(); i++) {
                 if (p2.monsterZones.get(i).position != Position.SET) {
                     noResponse(p2.monsterZones.get(i).card.getName() + Position.toString(p2.monsterZones.get(i).position));
                 } else {
                     noResponse("A set monster.");
                 }
+                noResponse("");
             }
         }
 
+        // Display the number of cards in the opponent's graveyard.
         if (p2.graveyard.size() == 1) {
-            noResponse("");
             noResponse("Your opponent has 1 card in their graveyard.");
-        } else {
             noResponse("");
+        } else {
             noResponse("Your opponent has " + p2.graveyard.size() + " cards in their graveyard");
-        }
-
-        if (p2.hand.size() == 1) {
             noResponse("");
-            noResponse("Your oppenent has 1 card in hand.");
-        } else {
-            noResponse("");
-            noResponse("Your opponent has " + p2.hand.size() + " cards in hand.");
         }
-        noResponse("");
     }
 
     public void switchPosition(Player p2) throws IOException {
