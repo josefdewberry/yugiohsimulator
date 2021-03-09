@@ -13,6 +13,8 @@ public class GUI {
     private JLabel bgLabel;
     private ImageIcon deckImage;
     private JLabel deckLabel;
+    private ImageIcon oppDeckImage;
+    private JLabel oppDeckLabel;
 
     /**
      * GUI constructor. Eventually will run a Yu-Gi-Oh monster battle simulator.
@@ -29,7 +31,12 @@ public class GUI {
         deckLabel = new JLabel(deckImage);
         deckLabel.setBounds(850, 475, 100, 147);
 
+        oppDeckImage = new ImageIcon(this.getClass().getResource("./yugioh/oppdeckresized.png"));
+        oppDeckLabel = new JLabel(deckImage);
+        oppDeckLabel.setBounds(75, -7, 100, 147);
+
         bgLabel.add(deckLabel);
+        bgLabel.add(oppDeckLabel);
         frame.add(bgLabel);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
