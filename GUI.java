@@ -11,6 +11,9 @@ public class GUI {
     
     private ImageIcon bgImage;
     private JLabel bgLabel;
+    private ImageIcon deckImage;
+    private JLabel deckLabel;
+
     /**
      * GUI constructor. Eventually will run a Yu-Gi-Oh monster battle simulator.
      */
@@ -22,6 +25,11 @@ public class GUI {
         bgLabel = new JLabel(bgImage);
         bgLabel.setSize(frame.getWidth(), frame.getHeight());
 
+        deckImage = new ImageIcon(this.getClass().getResource("./yugioh/deckresized.png"));
+        deckLabel = new JLabel(deckImage);
+        deckLabel.setBounds(850, 475, 100, 147);
+
+        bgLabel.add(deckLabel);
         frame.add(bgLabel);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
